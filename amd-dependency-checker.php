@@ -47,7 +47,7 @@ if (null != $commands) {
                 }
                 // now let's look for 'new' and 'adopt('
                 $nbResults = preg_match_all(
-                    '/this\.adopt\([^a-zA-Z]*([a-zA-Z\._]+),/',
+                    '/\.adopt\([^a-zA-Z]*([a-zA-Z\._]+)/',
                     $content,
                     $tmpAdopts
                 );
@@ -71,7 +71,7 @@ if (null != $commands) {
 
                 // scanning for news
                 $nbResults = preg_match_all(
-                    '/new[^a-zA-Z_]+([a-zA-Z_]+\.[a-zA-Z\._]+)\(/',
+                    '/new[^a-zA-Z_]+([a-zA-Z_]+\.[a-zA-Z\._]+)/',
                     $content,
                     $tmpNews
                 );
@@ -157,9 +157,9 @@ if (null != $commands) {
 
         }
         fclose($handle);
+        echo "\n";
     }
 }
-
 
 function cleanDependencies($dep)
 {
@@ -257,7 +257,6 @@ function checkInput($args)
     return $commands;
 }
 
-
 function getFiles($path, &$files, $recursive = false)
 {
     if ($recursive) {
@@ -275,5 +274,4 @@ function getFiles($path, &$files, $recursive = false)
         $files = array_merge($files, $result);
     }
 }
-
 ?>
